@@ -18,7 +18,13 @@
     </header>
     <section id="user-goal">
       <h2>My Course Goal</h2>
-      <p></p>
+      <!-- interpolation, a form of data binding, using {{}} between html opening/losing tags-->
+      <!-- <p>{{courseGoal}}</p> -->
+      <p >{{outputGoal()}}</p> 
+      <!-- v-bind directive -->
+      <p >Learn more about <a v-bind:href="vueLink">Vue</a> </p>
+      <!-- v-html directive -->
+      <p v-html="courseGoalC"></p>
     </section>
   </body>
 </html>
