@@ -22,7 +22,9 @@
       <!-- <div class="demo" :style="{borderColor: boxASelected ? 'red': '#ccc'}" @click="boxSelected('A')"></div> -->
       <!-- binding class is better but hard to read -->
       <!-- <div :class="boxASelected ? 'demo active': 'demo'" @click="boxSelected('A')"></div> -->
+      <!-- object-based styling -->
       <div class="demo" :class="{active: boxASelected}" @click="boxSelected('A')"></div>
+      <!-- array-based styling -->
       <div :class="['demo', {active: boxBSelected}]" @click="boxSelected('B')"></div>
       <div class="demo" :class="{active: boxCSelected}" @click="boxSelected('C')"></div>
       <!-- uses computed css property -->
