@@ -21,8 +21,15 @@
       <button v-on:click="add(10)">Add 10</button>
       <button v-on:click="reduce(5)">Subtract 5</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
-      <p>Your Name: {{ name }}</p>
+      <!-- <input type="text" v-bind:value="name" v-on:input="setName($event, 'Schwarzmüller')"> -->
+      <!-- 2-way binding, v-model is shortcut for both v-on:input and v-bind:value -->
+      <input type="text" v-model="name">
+      <input type="text" v-model="lastName">
+      <button v-on:click="resetInput" >Reset Input</button>
+      <!-- <p>Your Name: {{ name }}</p> -->
+      <!-- not good to have function call in {{}} -->
+      <!-- <p>Your Name: {{ outputFullName() }}</p> -->
+      <p>Your Name: {{ fullname }}</p>
     </section>
   </body>
 </html>
