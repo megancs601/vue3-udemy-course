@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@next" defer></script>
-    <script src="app.js" defer></script>
+    <script src="app.js" defer> </script>
   </head>
   <body>
     <header>
@@ -18,7 +18,10 @@
     </header>
     <section id="app">
       <h2>How Vue Works</h2>
-      <input type="text" @input="saveInput">
+      <!-- saveInput is called with eachc key stroke, which is good for validation, but overkill otherwise -->
+      <!-- <input type="text" @input="saveInput"> -->
+      <!-- ref is good to use only when you need them instead of all the time-->
+      <input type="text" ref="userText">
       <button @click="setText">Set Text</button>
       <p>{{ message }}</p>
     </section>
