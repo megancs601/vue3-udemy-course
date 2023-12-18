@@ -37,6 +37,17 @@
                 default: false
             }
         },
+        emits:{
+            "toggle-favorite": (id)=>{
+                if(id) {
+                    return true;
+                }
+                else {
+                    console.warn('Id is misssing!')
+                    return false;
+                }
+            }
+        },
         data(){
             return {
                 detailsAreVisible: false
