@@ -37,17 +37,20 @@
                 default: false
             }
         },
-        emits:{
-            "toggle-favorite": (id)=>{
-                if(id) {
-                    return true;
-                }
-                else {
-                    console.warn('Id is misssing!')
-                    return false;
-                }
-            }
-        },
+        //simplified emits that just shows what custom emits to expect
+        emits: ["toggle-favorite"],
+        //validate custom events
+        // emits:{
+        //     "toggle-favorite": (id)=>{
+        //         if(id) {
+        //             return true;
+        //         }
+        //         else {
+        //             console.warn('Id is missing!')
+        //             return false;
+        //         }
+        //     }
+        // },
         data(){
             return {
                 detailsAreVisible: false
