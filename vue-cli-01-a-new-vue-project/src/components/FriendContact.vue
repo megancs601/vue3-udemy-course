@@ -1,6 +1,6 @@
 <template>
     <li>
-        <h2> {{name}} {{ friendIsFavorite ? '(Favorite)':'' }}</h2>
+        <h2> {{name}} {{ isFavorite ? '(Favorite)':'' }}</h2>
         <button @click="toggleFavorite">Toggle Favorite</button>
         <button @click="toggleDetails">{{detailsAreVisible? 'Hide':'Show'}} Details</button>
         <ul v-if="detailsAreVisible">
@@ -15,6 +15,10 @@
         //i.e use phoneNumber in javascript, in html this translates to phone-number
         //don't use the same prop names in data properties
         props:{
+            id: {
+                type: String,
+                required: true
+            },
             name: {
                 type: String,
                 required: true,
@@ -35,9 +39,7 @@
         },
         data(){
             return {
-                detailsAreVisible: false,
-                //allows us to change the isFavorite prop
-                friendIsFavorite: this.isFavorite,
+                detailsAreVisible: false
             }
         },
         methods: {
@@ -45,7 +47,8 @@
                 this.detailsAreVisible = !this.detailsAreVisible;
             },
             toggleFavorite(){
-                this.friendIsFavorite = !this.friendIsFavorite;
+                //always use for custom events kebab-case
+                this.$emit("toggle-favorite", this.id);
             }
         }
     };
