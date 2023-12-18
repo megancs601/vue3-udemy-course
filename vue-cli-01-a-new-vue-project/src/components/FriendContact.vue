@@ -15,12 +15,30 @@
     export default{
         //i.e use phoneNumber in javascript, in html this translates to phone-number
         //don't use the same prop names in data properties
-        props:[
-            'name',
-            'phoneNumber',
-            'emailAddress',
-            "isFavorite"
-        ],
+        //props:['name', 'phoneNumber', 'emailAddress', "isFavorite" ],
+        props:{
+            name: {
+                type: String,
+                required: true,
+            },
+            phoneNumber: {
+                type: String,
+                required: true,
+            },
+            emailAddress: {
+                type: String,
+                required: true,
+            },
+            isFavorite: {
+                type: String,
+                required: false,
+                default: '0',
+                validator: (value)=>{
+                    //only allow isFavorite to equal either'1' or '0' 
+                    return value ==='1' || value ==='0'
+                }
+            }
+        },
         data(){
             return {
                 detailsAreVisible: false,

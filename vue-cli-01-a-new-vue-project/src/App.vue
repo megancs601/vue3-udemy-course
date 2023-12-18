@@ -12,7 +12,6 @@
             name="Julie Jones"
             phone-number="09876 543 221"
             email-address="julie@localhost.com"
-            is-favorite="0"
             ></friend-contact>
         </ul>
     </section>
