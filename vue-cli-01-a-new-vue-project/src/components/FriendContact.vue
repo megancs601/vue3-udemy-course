@@ -7,6 +7,7 @@
             <li>Phone: {{ phoneNumber }}</li>
             <li>Email: {{ emailAddress }}</li>
         </ul>
+        <button @click="deleteFriend">Delete</button>
     </li>
 </template>
 
@@ -38,7 +39,7 @@
             }
         },
         //simplified emits that just shows what custom emits to expect
-        emits: ["toggle-favorite"],
+        emits: ["toggle-favorite", "delete-friend"],
         //validate custom events
         // emits:{
         //     "toggle-favorite": (id)=>{
@@ -63,6 +64,9 @@
             toggleFavorite(){
                 //always use for custom events kebab-case
                 this.$emit("toggle-favorite", this.id);
+            },
+            deleteFriend(){
+                this.$emit("delete-friend", this.id);
             }
         }
     };
