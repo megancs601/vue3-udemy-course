@@ -1,6 +1,11 @@
 <template>
     <div>
+        <header>
+            <!-- named slot -->
+            <slot name="header"></slot>
+        </header>
         <!-- slots allow us to insert html content while being able to use vue features-->
+        <!-- default slot -->
         <slot></slot>
     </div>
 </template>
