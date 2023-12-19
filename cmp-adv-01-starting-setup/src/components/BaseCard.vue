@@ -1,8 +1,12 @@
 <template>
     <div>
-        <header>
+      <!-- check if there is something to insert into this header slot, if not don't render header tag in DOm -->
+        <header v-if="$slots.header">
             <!-- named slot -->
-            <slot name="header"></slot>
+            <slot name="header">
+              <!-- this h2 gets shown when there is nothing to slot into the header slot -->
+              <!-- <h2> The Default</h2> -->
+            </slot>
         </header>
         <!-- slots allow us to insert html content while being able to use vue features-->
         <!-- default slot -->
@@ -12,7 +16,10 @@
 
 <script>
 export default {
-    
+    mounted(){
+      // can console log .default too
+      console.log(this.$slots.header)
+    }
 }
 </script>
 
