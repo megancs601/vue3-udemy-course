@@ -7,7 +7,7 @@
       </template>
       <template v-slot:default>
         <p>{{ infoText }}</p>
-    </template>
+      </template>
     </base-card>
   </section>
 </template>
