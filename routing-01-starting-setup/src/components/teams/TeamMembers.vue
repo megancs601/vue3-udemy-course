@@ -47,6 +47,12 @@ export default {
     console.log(this.$route.query);
     this.loadTeamMembers(this.teamId);
   },
+  beforeRouteUpdate(to, from, next) {
+    console.log('TeamMembers beforeRouteUpdate');
+    //could be alternative to watcher for teamId
+    //this.loadTeamMembers(to.params.teamId);
+    next();
+  },
   watch: {
     teamId(newRoute) {
       this.loadTeamMembers(newRoute);

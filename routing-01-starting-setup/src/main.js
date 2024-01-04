@@ -31,6 +31,10 @@ const router = createRouter({
       path: '/users',
       //component: UserList, // our domain.com/users => UsersList
       components: { default: UserList, footer: UsersFooter },
+      beforeEnter(to, from, next) {
+        console.log('users beforeEach');
+        next();
+      },
     },
 
     { path: '/:notFound(.*)', redirect: '/teams' }, // this comes last for lowest priority
