@@ -11,10 +11,16 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/teams' }, //changes url to localIp/teams
     {
+      name: 'teams',
       path: '/teams',
       component: TeamsList, // our domain.com/teams => TeamsList
       children: [
-        { path: ':teamId', component: TeamMembers, props: true }, //teamId will be passed as a prop rather than stored in a $router.params
+        {
+          name: 'team-members',
+          path: ':teamId',
+          component: TeamMembers,
+          props: true,
+        }, //teamId will be passed as a prop rather than stored in a $router.params
       ],
       //alias: '/' //works same way as { path: '/', redirect: '/teams' } but doesn't change the url
     },
