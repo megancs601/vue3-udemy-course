@@ -5,6 +5,8 @@ import App from './App.vue';
 import TeamsList from './components/teams/TeamsList.vue';
 import UserList from './components/users/UsersList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
+import TeamsFooter from './components/teams/TeamsFooter.vue';
+import UsersFooter from './components/users/UsersFooter.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,7 +15,8 @@ const router = createRouter({
     {
       name: 'teams',
       path: '/teams',
-      component: TeamsList, // our domain.com/teams => TeamsList
+      // component: TeamsList, // our domain.com/teams => TeamsList
+      components: { default: TeamsList, footer: TeamsFooter },
       children: [
         {
           name: 'team-members',
@@ -26,7 +29,8 @@ const router = createRouter({
     },
     {
       path: '/users',
-      component: UserList, // our domain.com/users => UsersList
+      //component: UserList, // our domain.com/users => UsersList
+      components: { default: UserList, footer: UsersFooter },
     },
 
     { path: '/:notFound(.*)', redirect: '/teams' }, // this comes last for lowest priority
