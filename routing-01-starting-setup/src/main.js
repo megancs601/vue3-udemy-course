@@ -13,13 +13,16 @@ const router = createRouter({
     {
       path: '/teams',
       component: TeamsList, // our domain.com/teams => TeamsList
+      children: [
+        { path: ':teamId', component: TeamMembers, props: true }, //teamId will be passed as a prop rather than stored in a $router.params
+      ],
       //alias: '/' //works same way as { path: '/', redirect: '/teams' } but doesn't change the url
     },
     {
       path: '/users',
       component: UserList, // our domain.com/users => UsersList
     },
-    { path: '/teams/:teamId', component: TeamMembers, props: true }, //teamId will be passed as a prop rather than stored in a $router.params
+
     { path: '/:notFound(.*)', redirect: '/teams' }, // this comes last for lowest priority
   ],
 });
