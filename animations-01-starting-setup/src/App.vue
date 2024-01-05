@@ -4,12 +4,14 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
+    <!-- transition component must have on direct child element -->
     <transition name="para">
       <p v-if="paraIsVisible">this only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
   </div>
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
+  <!-- transition component would not work here since there's multiple children in base-modal -->
+  <base-modal @close="hideDialog" :open="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
