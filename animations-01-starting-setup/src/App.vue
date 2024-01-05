@@ -5,7 +5,17 @@
   </div>
   <div class="container">
     <!-- transition component must have on direct child element -->
-    <transition name="para">
+    <transition
+      name="para"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @enter-cancelled="enterCancelled"
+      @leave-cancelled="leaveCancelled"
+    >
       <p v-if="paraIsVisible">this only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -35,6 +45,8 @@ export default {
       dialogIsVisible: false,
       paraIsVisible: false,
       usersAreVisible: false,
+      enterInterval: null,
+      leaveInterval: null,
     };
   },
   methods: {
@@ -55,6 +67,48 @@ export default {
     },
     hideUsers() {
       this.usersAreVisible = false;
+    },
+    beforeEnter(ele) {
+      console.log('before enter');
+      console.log(ele);
+      ele.style.opacity = 0;
+    },
+    enter(ele, done) {
+      let round = 1;
+      this.enterInterval = setInterval(() => {
+        ele.style.opacity = round * 0.01;
+        round++;
+
+        if (round > 100) {
+          clearInterval(this.enterInterval);
+          done();
+        }
+      }, 20);
+    },
+    afterEnter(ele) {
+      console.log('after enter');
+      console.log(ele);
+      ele.style.opacity = 1;
+    },
+    beforeLeave() {},
+    leave(ele, done) {
+      let round = 1;
+      this.leaveInterval = setInterval(() => {
+        ele.style.opacity = 1 - round * 0.01;
+        round++;
+
+        if (round > 100) {
+          clearInterval(this.leaveInterval);
+          done();
+        }
+      }, 20);
+    },
+    afterLeave() {},
+    enterCancelled() {
+      clearInterval(this.enterInterval);
+    },
+    leaveCancelled() {
+      clearInterval(this.leaveInterval);
     },
   },
 };
@@ -106,36 +160,6 @@ button:active {
 .animate {
   /* transform: translateX(-150px); */
   animation: slide-scale 0.3s ease-out forwards;
-}
-
-.para-enter-from {
-  /* opacity: 0;
-  transform: translateY(-30px); */
-}
-
-.para-enter-active {
-  /* transition: all 0.3s ease-out; */
-  animation: slide-scale 0.3s ease-out;
-}
-
-.para-enter-to {
-  /* opacity: 1;
-  transform: translateY(0px); */
-}
-
-.para-leave-from {
-  /* opacity: 1;
-  transform: translateY(0px); */
-}
-
-.para-leave-active {
-  /* transition: all 0.3s ease-out; */
-  animation: slide-scale 0.3s ease-in;
-}
-
-.para-leave-to {
-  /* opacity: 0;
-  transform: translateY(-30px); */
 }
 
 .fade-button-enter-from,
