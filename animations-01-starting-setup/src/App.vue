@@ -6,6 +6,7 @@
   <div class="container">
     <!-- transition component must have on direct child element -->
     <transition
+      :css="false"
       name="para"
       @before-enter="beforeEnter"
       @enter="enter"
