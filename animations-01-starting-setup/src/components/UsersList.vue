@@ -20,7 +20,7 @@ export default {
   methods: {
     addUser() {
       const enteredName = this.$refs.userNameInput.value;
-      this.users.push(enteredName);
+      this.users.unshift(enteredName);
     },
     removeUser(user) {
       this.users = this.users.filter((_user) => _user !== user);
@@ -40,6 +40,7 @@ li {
   border: 1px solid #ccc;
   padding: 1rem;
   text-align: center;
+  background-color: #fff;
 }
 
 .user-list-enter-from {
@@ -58,10 +59,15 @@ li {
 }
 .user-list-leave-active {
   transition: all 1s ease-in;
+  position: absolute;
 }
 
 .user-list-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.user-list-move {
+  transition: transform 0.8s ease;
 }
 </style>
