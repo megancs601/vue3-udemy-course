@@ -1,12 +1,17 @@
 <template>
-  <button @click="addOne">Add 1</button>
+  <button @click="addOne">Add 11</button>
 </template>
 
 <script>
 export default {
   methods: {
     addOne() {
-      this.$store.commit('increment');
+      //this.$store.commit('increase', { value: 11 });
+      //same as above
+      this.$store.commit({
+        type: 'increase',
+        value: 11,
+      });
     },
   },
 };
