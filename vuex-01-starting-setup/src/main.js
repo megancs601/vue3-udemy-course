@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createStore } from 'vuex';
 
 const counterModule = {
+  namespaced: true,
   state() {
     return {
       counter: 0,
